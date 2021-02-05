@@ -30,6 +30,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     @Override
     public ReportingStructure read(String id){
         LOG.debug("Fetching reporting structure with id [{}]", id);
+
         Employee employee = employeeRepository.findByEmployeeId(id);
 
         if (employee == null) {
@@ -39,9 +40,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
         ReportingStructure reportingStructure = new ReportingStructure();
 
         reportingStructure.setEmployee(employee);
-
-        Set<String> accountedReports = new HashSet<>();
-        reportingStructure.setNumberOfReports(countNumberOfReports(employee, accountedReports));
+        reportingStructure.setNumberOfReports(countNumberOfReports(employee, new HashSet<String>()));
 
         return reportingStructure;
     }
