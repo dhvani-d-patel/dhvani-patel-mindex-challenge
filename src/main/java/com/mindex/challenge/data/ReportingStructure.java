@@ -1,5 +1,8 @@
 package com.mindex.challenge.data;
 
+/**
+ * ReportingStructure type consisting two properties: Employee and Number of reports under the employee.
+ */
 public class ReportingStructure {
     private Employee employee;
     private int numberOfReports;
